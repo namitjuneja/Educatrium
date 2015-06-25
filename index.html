@@ -1,0 +1,620 @@
+<html>
+<head>
+<title>moustache.js</title>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
+
+<script>
+var type="";
+var data = {};
+var data1 = 
+			{
+				passage_segs : ["NewSamplePassage1", "NewSamplePassage2", "NewSamplePassage3"],
+
+			questions : [
+				{					
+					question_prompt : "qprompt",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"		
+				}, 
+				{
+					question_prompt : "qprompt2",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"	
+				}
+				]
+
+		}
+
+
+function feedData()
+{
+
+
+	if (type == "IE")
+	{
+		data = 
+		{
+			qseg1 : "qs1", 
+			qseg2 : "qs2",
+			qseg3 : "qs3",
+			qseg4 : "qs4",
+			qseg5 : "qs5",
+			qseg6 : "qs6",
+			qseg7 : "qs7",
+			qseg8 : "qs8",
+			qseg9 : "qs9",
+			qseg10 : "qs10"
+		}
+	}
+
+	else if (type == "IP")
+	{
+		data = 
+		{
+			passage_segs : ["SamplePassage1", "SamplePassage2", "SamplePassage3"],
+			questions : [
+				{					
+					question_prompt : "qprompt",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"		
+				}, 
+				{
+					question_prompt : "qprompt2",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"	
+				}
+				]
+
+		}
+	}
+
+	else if (type == "IS")
+	{	
+		data = 
+		{
+		qseg1 : "qs1", 
+		qseg2 : "qs2",
+		qseg3 : "qs3",
+		answer_a : "answer_a",
+		answer_b : "answer_b",
+		answer_c : "answer_c",
+		answer_d : "answer_d",
+		answer_e : "answer_e"
+		}
+	}
+}
+function dothejob()  //embed the templates
+{	
+	if (type == "IE")
+	{
+		var template = document.getElementById("IE").innerHTML;
+		var output = Mustache.render(template, data);
+		document.getElementById("final").innerHTML = output;
+	}
+	else if (type == "IP")
+	{
+		var template = document.getElementById("IP").innerHTML;
+		var output = Mustache.render(template, data);
+		document.getElementById("final").innerHTML = output;
+	}
+	else if (type == "IS")
+	{
+		var template = document.getElementById("IS").innerHTML;
+		var output = Mustache.render(template, data);
+		document.getElementById("final").innerHTML = output;
+	}
+}
+
+var q_num;
+function loadXMLDoc()
+
+
+    {
+        var content;
+        var textfile;
+
+
+        if (window.XMLHttpRequest)
+        {
+            textfile = new XMLHttpRequest();
+        }
+        textfile.onreadystatechange = function ()
+        {
+            if (textfile.readyState == 4 && textfile.status == 200)
+            {
+                 data =  JSON.parse(textfile.responseText);
+
+                 q_num = q_num + 1;
+                 type = data.type;
+       
+   
+
+
+
+
+            }
+        }
+        textfile.open("GET", "./yesyes_6.php?q=" + q_num.toString(), true);
+        textfile.send();
+
+    } //get data from db via php
+var countip = 0;
+function passageAssign(){ //assigning sample data
+	console.log(countip);
+	if (countip == 0){
+		data = 
+		{
+			passage_segs : ["(1) On September 10, 1973, the United States Postal Service issued a stamp honoring Henry Ossawa Tanner (1859-1937), one of four stamps in the American Arts series. (2) Acclaimed as an artist in the United States and Europe at the turn of the century, Tanner was called the \"dean\" of art by W. E. B. Du Bois. (3) But after his death, Tanner's work was largely forgotten. (4) And so it remained, and even later, in 1969, the donation of one of his paintings to the Smithsonian Institution aroused new interest in the art of this American master. (5) Now his works are on exhibit again. (6) You can even buy posters of his paintings!", "(7) One of his most famous works is a realistic painting by the name of \"The Banjo Lesson.\" (8) It was inspired by a poem of Paul Laurence Dunbar. (9) The painting isn't like a photograph. (10) The magnificence of his work can be seen with each subtle brush stroke, each carefully crafted detail. (11) The effect is truly beautiful. (12) If I were to try to identify the dominant theme of the painting, I would have to say that it is family cohesiveness because the entire scene seems to emphasize the bond between the boy and his grandfather."],
+			questions : [
+				{					
+					question_prompt : "",
+				 	qseg1 : "", 
+					qseg2 : "century, Tanner was called the \"dean\" of art by W. E. B. Du Bois.",
+					qseg3 : "",
+				 	answer_a : "(as it is now),",
+					answer_b : "century; Tanner was called the \"dean\" of art by W.E.B. Du Bois",
+					answer_c : "century, Tanner, who was called \"dean\" of art by W.E.B. Du Bois",
+					answer_d : "century, W.E.B. Du Bois calling Tanner the \"dean\" of art",
+					answer_e : "century, it was W.E.B. Du Bois who called Tanner the \"dean\" of art"		
+				}, 
+				{
+					question_prompt : "",
+				 	qseg1 : "And so it", 
+					qseg2 : "remained, and even later, in 1969,",
+					qseg3 : "the donation of one of his paintings to the Smithsonian Institution aroused new interest in the art of this American master.",
+				 	answer_a : "(as it is now)",
+					answer_b : "remained, and even after that, in 1969,",
+					answer_c : "remained, but even then, in 1969,",
+					answer_d : "remained until 1969, when",
+					answer_e : "remained when in 1969"	
+				}, 
+				{					
+					question_prompt : "",
+				 	qseg1 :  "",
+					qseg2 : "You can even buy posters of his painting!",
+					qseg3 : "",
+				 	answer_a : "It is amazing, you can buy posters his paintings.",
+					answer_b : "Even ordinary peopl like us can buy posters of his paintings",
+					answer_c : "Posters of his paintings had been sold.",
+					answer_d : "People can even buy his paintings as a poster.",
+					answer_e : "One can even buy posters of his paintings."		
+				},
+				{					
+					question_prompt : "",
+				 	qseg1 :  "",
+					qseg2 : "One of his most famous works is a realistic painting by the name of \"The Banjo Lesson.",
+					qseg3 : "",
+				 	answer_a : "Add \In contrast, to the beginning of the sentence.",
+					answer_b : "Change \a realistic painting by the name of\ to \the realistic painting",
+					answer_c : "Delete the words \"of his most famous works",
+					answer_d : "Change \"is\" to \"had been",
+					answer_e : "Delete \"most famous"		
+				},
+				{					
+					question_prompt : "",
+				 	qseg1 :  "",
+					qseg2 : "One of his most famous works is a realistic painting by the name of \"The Banjo Lesson.",
+					qseg3 : "",
+				 	answer_a : "Add \In contrast, to the beginning of the sentence.",
+					answer_b : "Change \a realistic painting by the name of\ to \the realistic painting",
+					answer_c : "Delete the words \"of his most famous works",
+					answer_d : "Change \"is\" to \"had been",
+					answer_e : "Delete \"most famous"		
+				}
+
+				]
+	}
+	countip = 1;
+	}
+	else if (countip == 1){
+		data = 
+		{
+			passage_segs : ["SamplePassage1", "SamplePassage1", "SamplePassage1"],
+			questions : [
+				{					
+					question_prompt : "qprompt",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"		
+				}, 
+				{
+					question_prompt : "qprompt2",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"	
+				}
+				]
+	}
+	countip = 2;
+	}
+}
+var countrp = 0;
+function readingPassageAssign(){ //assigning sample data
+	console.log(countrp);
+	if (countrp == 0){
+		data = 
+		{
+			passage_segs : ["<li>Food has always been considered one of the most salient</li><li>markers of cultural traditions. When I was a small child,</li><li>food was the only thing that helped identify my family as</li><li>Filipino American. We ate pansit lug-lug (a noodle dish)</li><li>and my father put patis (salty fish sauce) on everything.</li><li>However, even this connection lessened as I grew older.</li><li>As my parents became more acculturated, we ate less</li><li>typically Filipino food. When I was twelve, my mother</li><li>took cooking classes and learned to make French and</li><li>Italian dishes. When I was in high school, we ate chicken</li><li>marsala and shrimp fra diablo more often than Filipino</li><li>dishes like pansit lug-lug.</li><li>&emsp;Jean Anthelme Brillat-Savarin— who in 1825 confi-</li><li>dently announced, “Tell me what you eat, and I will tell</li><li>you who you are”— would have no trouble describing</li><li>cultural identities of the United States. Our food reveals</li><li>us as tolerant adventurers who do not feel constrained</li><li>by tradition. We “play with our food” far more readily</li><li>than we preserve the culinary rules of our varied ancestors.</li><li>Americans have no single national cuisine. What unites</li><li>American eaters culturally is how we eat, not what we</li><li>eat. As eaters, Americans mingle the culinary traditions</li><li>of many regions and cultures. We are multiethnic eaters .</li>"],
+			questions : [
+				{					
+					question_prompt : "Which of the following statements best captures the relationship between the two passages?",
+				 	qseg1 : "", 
+					qseg2 : "",
+					qseg3 : "",
+				 	answer_a : "Passage 1 notes problems for which Passage 2 proposes solutions.",
+					answer_b : "Passage 1 presents claims that are debunked by Passage 2.",
+					answer_c : "Passage 2 furnishes a larger context for the experiences described in Passage 1",
+					answer_d : "Passage 2 provides an update of the situation depicted in Passage 1.",
+					answer_e : "Passage 2 uses material presented in Passage 1 to correct a popular misconception."		
+				}, 
+				{
+					question_prompt : "The author of Passage 2 would most likely regard the mother’s willingness to “make French and Italian dishes” (lines 9-10, Passage 1) as",
+				 	qseg1 : "", 
+					qseg2 : "",
+					qseg3 : "",
+				 	answer_a : "laughably pretentious",
+					answer_b : "understandably conservative",
+					answer_c : "typically American",
+					answer_d : "a regrettable compromise",
+					answer_e : "a surprising attitude"	
+				},
+				{
+					question_prompt : "The two passages differ in their discussions of food primarily in that Passage 1",
+				 	qseg1 : "", 
+					qseg2 : "",
+					qseg3 : "",
+				 	answer_a : "considers specific dishes eaten by particular people, whereas Passage 2 comments on a culture’s general attitude toward eating",
+					answer_b : "contrasts the cuisines of different cultures, whereas Passage 2 emphasizes culinary practices common to all cultures",
+					answer_c : "presents an abstract theory of food, whereas Passage 2 offers a historical analysis of consumption",
+					answer_d : "emphasizes the role of nostalgia in food preferences, whereas Passage 2 rejects that approach as overly sentimenta",
+					answer_e : "outlines some popular choices in cuisine, whereas Passage 2 underscores those that are more unusual	"	
+				},
+				{
+					question_prompt : "Unlike the author of Passage 2, the author of Passage 1 makes significant use of",
+				 	qseg1 : "", 
+					qseg2 : "",
+					qseg3 : "",
+				 	answer_a : "direct quotation",
+					answer_b : "sociological analysis",
+					answer_c : "hypothetical assumptions",
+					answer_d : "historical sources",
+					answer_e : "personal experience"	
+				},
+				]
+	}
+	countrp = 1;
+	}
+	else if (countrp == 1){
+		data = 
+		{
+			passage_segs : ["second", "Paragraphs", "hai"],
+			questions : [
+				{					
+					question_prompt : "qprompt",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"		
+				}, 
+				{
+					question_prompt : "qprompt2",
+				 	qseg1 : "qs1", 
+					qseg2 : "qs2",
+					qseg3 : "qs3",
+				 	answer_a : "answer_a",
+					answer_b : "answer_b",
+					answer_c : "answer_c",
+					answer_d : "answer_d",
+					answer_e : "answer_e"	
+				}
+				]
+	}
+	countrp = 2;
+	}
+}
+
+function nextQuestion(question_type)   //next question initiator (dothejob + load from php)
+{
+	// if (type == "IE")
+	// {
+	// 	type = "IP";
+	// }
+	// else if (type == "IP")
+	// {
+	// 	type = "IS";
+	// }
+	// else if (type == "IS")
+	// {
+	// 	type = "IE";
+	// }
+	// feedData();
+	if (question_type == "IS"){
+
+			loadXMLDoc();
+
+	}
+	else if (question_type == "IE"){
+
+			loadXMLDoc();
+	}
+	else if (question_type == "IP"){
+		type = "IP";
+		passageAssign();
+
+	}
+	else if (question_type == "RP"){
+		type = "IP";
+		readingPassageAssign();
+
+	}
+
+	dothejob();
+	console.log("all done");
+
+}
+function nextQuestion_new(question_type)   //next question initiator (dothejob + load from php)
+{
+	// if (type == "IE")
+	// {
+	// 	type = "IP";
+	// }
+	// else if (type == "IP")
+	// {
+	// 	type = "IS";
+	// }
+	// else if (type == "IS")
+	// {
+	// 	type = "IE";
+	// }
+	// feedData();
+	if (question_type == "IS"){
+		q_num = 1000000060;
+			loadXMLDoc();
+
+	}
+	else if (question_type == "IE"){
+		q_num = 1000000070;
+			loadXMLDoc();
+	}
+	else if (question_type == "IP"){
+		type = "IP";
+		passageAssign();
+
+	}
+	else if (question_type == "RP"){
+		type = "IP";
+		readingPassageAssign();
+
+	}
+
+	dothejob();
+	console.log("all done");
+
+}
+
+
+</script>
+<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	
+<div id = "final"></div>
+<script id="IP" type="text/html">
+	
+	<div class="container">
+		
+		
+		<div class='IP_passage'>
+		{{#passage_segs}}
+		<p>{{{.}}}</p>
+		{{/passage_segs}}
+		</div>
+		
+
+		<div class='IP_questions'>
+			{{#questions}}
+		    <span>{{question_prompt}}</span>
+			<span>{{qseg1}}</span>
+			<span><u>{{qseg2}}</u></span>
+			<span>{{qseg3}}</span>
+
+			<form class="IP_answers">
+				 <Input type = radio Name = "answer" Value = "A" onClick =GetSelectedItem()>{{answer_a}}<br>
+				 <Input type = radio Name = "answer" Value = "B" onClick =GetSelectedItem()>{{answer_b}}<br>
+				 <Input type = radio Name = "answer" Value = "C" onClick =GetSelectedItem()>{{answer_c}}<br>
+				 <Input type = radio Name = "answer" Value = "D" onClick =GetSelectedItem()>{{answer_d}}<br>
+				 <Input type = radio Name = "answer" Value = "E" onClick =GetSelectedItem()>{{answer_e}}<br>
+			</form>
+			{{/questions}}
+		</div>
+		
+	</div>
+	<input type="button" onclick="nextQuestion('IP');" value="Next Question">
+</script>
+
+<script id="IE" type="text/html">
+<div class="IE_problem"></div>
+
+
+<div class="IE_question">
+ <span>{{qseg1}}</span>
+
+<span class="IE_underlined_phrase">
+    <span>{{qseg2}}</span>
+    <span class="IE_underline">A</span>
+</span>
+
+<span id="id3" >{{qseg3}}</span>
+
+<span class="IE_underlined_phrase">
+    <span>{{qseg4}}</span>
+    <span class="IE_underline">B</span>
+</span>
+
+<span>{{qseg5}}</span>
+
+<span class="IE_underlined_phrase">
+    <span>{{qseg6}}</span>
+    <span class="IE_underline">C</span>
+</span>
+
+<span>{{qseg7}}</span>
+<span class="IE_underlined_phrase">
+    <span>{{qseg8}}</span>
+    <span class="IE_underline">D</span>
+</span>
+
+<span>{{qseg9}}</span>
+
+<span class="IE_underlined_phrase">
+    <span>{{qseg10}}</span>
+    <span class="IE_underline">E</span>
+</span>
+
+</div>
+
+
+<form name = f1>
+            <div>
+ <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "A" style="display:inline;">A</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "B" style="display:inline;">B</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "C" style="display:inline;">C</div>
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "D" style="display:inline;">D</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "E" style="display:inline;">E</div>
+
+            </div>
+</form>
+
+
+<input type="button" onclick="nextQuestion('IE');" value="Next Question">
+
+</script>
+
+<script id="IS" type="text/html">
+<div class="IS_problem"></div>
+
+
+<div class="IS_question">
+ <span>{{qseg1}}</span>
+
+<span class="IS_underlined_phrase">
+    <span>{{qseg2}}</span>
+    <span class="IS_underline"></span>
+</span>
+
+<span id="id3" >{{qseg3}}</span>
+
+
+</div>
+
+
+<form name = f1>
+            <div>
+ <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "A" style="display:inline;">{{answer_a}}</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "B" style="display:inline;">{{answer_b}}</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "C" style="display:inline;">{{answer_c}}</div>
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "D" style="display:inline;">{{answer_d}}</div>
+
+            </div>
+
+            <div>
+
+            <div style="display:inline;"> <Input type = radio Name = "r1" Value = "A" onClick =GetSelectedItem()></div>
+            <div id = "E" style="display:inline;">{{answer_e}}</div>
+
+            </div>
+</form>
+
+
+<input type="button" onclick="nextQuestion('IS');" value="Next Question">
+
+</script>
+
+<input type="button" onclick="nextQuestion_new('IP');" value="Improving Paragraphs">
+<input type="button" onclick="nextQuestion_new('IE');" value="Identifying Errors">
+<input type="button" onclick="nextQuestion_new('IS');" value="Improving Senetences">
+<input type="button" onclick="nextQuestion_new('RP');" value="Reading Passages">
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+.IP_passage{
+	display:inline-block;
+    border: 5px solid gray;
+    padding: 5px;
+    background: white;
+    width: 45%;
+    height: 400px;
+    overflow-y: scroll;
+    vertical-align:top;
+
+      text-align: left;
+}
+
+.IP_questions{
+	display:inline-block;
+    
+    border: 5px solid gray;
+    padding: 5px;
+    background: white;
+    width: 45%;
+    height: 400px;
+    overflow-y: scroll;
+    vertical-align:top;
+
+      text-align: left;
+}
+
+.IP_container {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+
+.IE_question {
+    line-height: 2.5
+}
+
+.IE_underlined_phrase {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.IE_underline{
+    padding-top: 3px;
+    border-top: 1px solid;
+    line-height: 1;
+    margin-top: -0.7em;
+    display: block;
+    text-align: center;
+}
+
+.IS_question {
+    line-height: 2.5
+}
+
+.IS_underlined_phrase {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.IS_underline{
+    padding-top: 3px;
+    border-top: 1px solid;
+    line-height: 1;
+    margin-top: -0.7em;
+    display: block;
+    text-align: center;
+}
+li:nth-of-type(5n) {
+    list-style-type: decimal;
+}
+li:nth-of-type(5n-1) {
+    list-style-type: none;
+    padding-left: 1em;
+}
+li:nth-of-type(5n-2) {
+    list-style-type: none;
+    padding-left: 1em;
+}
+li:nth-of-type(5n-3) {
+    list-style-type: none;
+    padding-left: 1em;
+}
+li:nth-of-type(5n-4) {
+    list-style-type: none;
+    padding-left: 1em;
+}
